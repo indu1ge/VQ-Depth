@@ -225,7 +225,7 @@ def evaluate(opt):
 
 
 
-    results_edit=open('results.txt',mode='a')
+    results_edit=open(os.path.join(opt.load_weights_folder, 'results.txt'),mode='a')
     results_edit.write("\n " + 'model_name: %s '%(opt.load_weights_folder))
     results_edit.write("\n " + ("{:>8} | " * 7).format("abs_rel", "sq_rel", "rmse", "rmse_log", "a1", "a2", "a3"))
     results_edit.write("\n " + ("&{: 8.3f}  " * 7).format(*mean_errors.tolist()) + "\\\\")

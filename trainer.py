@@ -301,7 +301,7 @@ class Trainer:
             # Otherwise, we only feed the image with frame_id 0 through the depth encoder
             outputs = {}
             
-            features = self.models["encoder"](inputs["color_aug", 0, 0])
+            features = self.models["encoder"](inputs["color_aug", 0, 0])    # 128 224 368 480 480
             outputs = self.models["depth"](features)
                 
         if self.opt.predictive_mask:
@@ -605,9 +605,10 @@ class Trainer:
         for j in range(min(4, self.opt.batch_size)):  # write a maxmimum of four images
             for s in self.opt.scales:
                 for frame_id in self.opt.frame_ids:
-                    writer.add_image(
-                        "color_{}_{}/{}".format(frame_id, s, j),
-                        inputs[("color", frame_id, s)][j].data, self.step)
+                    if s==0:
+                        writer.add_image(
+                            "color_{}_{}/{}".format(frame_id, s, j),
+                            inputs[("color", frame_id, s)][j].data, self.step)
                     # writer.add_image(
                     #     "color_aug_{}_{}/{}".format(frame_id, s, j),
                     #     inputs[("color_aug", frame_id, s)][j].data, self.step)

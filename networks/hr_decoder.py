@@ -25,6 +25,7 @@ class DepthDecoder(nn.Module):
         self.convs["f3"] = Attention_Module(self.ch_enc[3]  , num_ch_enc[3])
         self.convs["f2"] = Attention_Module(self.ch_enc[2]  , num_ch_enc[2])
         self.convs["f1"] = Attention_Module(self.ch_enc[1]  , num_ch_enc[1])
+        # self.convs["f0"] = Attention_Module(self.ch_enc[0]  , num_ch_enc[0])
         
 
 
@@ -90,6 +91,7 @@ class DepthDecoder(nn.Module):
         feat[3] = self.convs["f3"](input_features[3])
         feat[2] = self.convs["f2"](input_features[2])
         feat[1] = self.convs["f1"](input_features[1])
+        # feat[0] = self.convs["f0"](input_features[0])
         feat[0] = input_features[0]
         
         features = {}

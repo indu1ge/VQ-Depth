@@ -1,4 +1,0 @@
-
- model_name: /data1/dataset/szy_code/monovit/log/baseline/mpsmall_2gpu_4bs_ms/models/weights_19 
-  abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 | 
- &   0.092  &   0.683  &   4.195  &   0.170  &   0.915  &   0.969  &   0.984  \\
